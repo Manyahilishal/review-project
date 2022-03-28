@@ -7,29 +7,35 @@
 // Using the above array and password length variable, create a random password using a for loop inside of a function called "addNewPassword" either saved as an arrow function variable or a traditional function
 
 // ========= ⬇ DO NOT TOUCH THIS CODE ⬇ ======
-
-let genBtn = document.getElementById("btnGen");
-let buttonHandler = () => {
-    document.getElementById("password").value = addNewPassword();
-};
-// Event listener for generate PW button
-genBtn.addEventListener("click", buttonHandler);
-
-// ========= ⬆ DO NOT TOUCH THIS CODE ⬆ ======
-
-const input = document.querySelector("input");
-const button = document.querySelector("#passgen");
-function GeneratePassword(length = 8) {
-const randomPassword =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$!%^&*()_+=-";
-
-  let password = "";
-  for (let i = 0; i < length; ++i) {
-    let at = Math.floor(Math.random() * (randomPassword.length + 1));
-    password += randomPassword.charAt(at);
-  }
-  return password;
+var password=document.getElementById("password");
+var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+ var passwordLength = 12;
+ var password = "";
+ for (var i = 0; i <= passwordLength; i++) {
+  var randomNumber = Math.floor(Math.random() * chars.length);
+  password += chars.substring(randomNumber, randomNumber +1);
+ }
+ document.getElementById("password").value = password;
+ function copyPassword() {
+  var copyText = document.getElementById("password");
+  copyText.select();
+  document.execCommand("copy");  
 }
-button.addEventListener("click", () => {
-  input.value = GeneratePassword(8);
-});
+var password=document.getElementById("password");
+
+ function genPassword() {
+    var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var passwordLength = 12;
+    var password = "";
+ for (var i = 0; i <= passwordLength; i++) {
+   var randomNumber = Math.floor(Math.random() * chars.length);
+   password += chars.substring(randomNumber, randomNumber +1);
+  }
+        document.getElementById("password").value = password;
+ }
+
+function copyPassword() {
+  var copyText = document.getElementById("password");
+  copyText.select();
+  document.execCommand("copy");  
+}
