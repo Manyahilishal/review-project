@@ -16,17 +16,33 @@ let buttonHandler = () => {
 genBtn.addEventListener("click", buttonHandler);
 
 // ========= ⬆ DO NOT TOUCH THIS CODE ⬆ ======
-var password=document.getElementById("password");
-var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
- var passwordLength = 12;
- var password = "";
- for (var i = 0; i <= passwordLength; i++) {
-    var randomNumber = Math.floor(Math.random() * chars.length);
-    password += chars.substring(randomNumber, randomNumber +1);
-   }
-   document.getElementById("password").value = password;
-   function copyPassword() {
-    var copyText = document.getElementById("password");
-    copyText.select();
-    document.execCommand("copy");  
+
+const alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const numbers = "0123456789";
+const symbols = "!@#$%^&*_-+=";
+const passwordTxt = document.getElementById("password");
+const length = document.getElementById("length");
+const incNumbers = document.getElementById("numbers");
+const incSymbols = document.getElementById("symbols");
+const generateBtn = document.getElementById("generate");
+generateBtn.addEventListener("click", () => {
+  let characters = alpha;
+  incNumbers.checked ? (characters += numbers) : "";
+  incSymbols.checked ? (characters += symbols) : "";
+  passwordTxt.value = generatePassword(length.value, characters);
+});
+const generatePassword = (length, characters) => {
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    password += characters.charAt(
+      Math.floor(Math.random() * characters.length)
+    );
   }
+  return password;
+};
+const copyBtn = document.getElementById("copy");
+copyBtn.addEventListener("click", () => {
+  passwordTxt.select();
+  document.execCommand("copy");
+  alert("Password Copied");
+});
