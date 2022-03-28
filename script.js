@@ -25,3 +25,8 @@ var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTU
     password += chars.substring(randomNumber, randomNumber +1);
    }
    document.getElementById("password").value = password;
+   function copyPassword() {
+    var copyText = document.getElementById("password");
+    copyText.select();
+    document.execCommand("copy");  
+  }
