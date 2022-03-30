@@ -7,14 +7,10 @@
 // Using the above array and password length variable, create a random password using a for loop inside of a function called "addNewPassword" either saved as an arrow function variable or a traditional function
 
 // ========= ⬇ DO NOT TOUCH THIS CODE ⬇ ======
-function makePasswd() {
-  var passwd = '';
-  var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  for (i=1;i<8;i++) {
-    var c = Math.floor(Math.random()*chars.length + 1);
-    passwd += chars.charAt(c)
-  }
-
-  return passwd;
-
+function random_password_generate(max,min)
+{
+    var passwordChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#@!%&()/";
+    var randPwLen = Math.floor(Math.random() * (max - min + 1)) + min;
+    var randPassword = Array(randPwLen).fill(passwordChars).map(function(x) { return x[Math.floor(Math.random() * x.length)] }).join('');
+    return randPassword;
 }
