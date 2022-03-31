@@ -7,10 +7,18 @@
 // Using the above array and password length variable, create a random password using a for loop inside of a function called "addNewPassword" either saved as an arrow function variable or a traditional function
 
 // ========= ⬇ DO NOT TOUCH THIS CODE ⬇ ======
-function random_password_generate(max,min)
-{
-    var passwordChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#@!%&()/";
-    var randPwLen = Math.floor(Math.random() * (max - min + 1)) + min;
-    var randPassword = Array(randPwLen).fill(passwordChars).map(function(x) { return x[Math.floor(Math.random() * x.length)] }).join('');
-    return randPassword;
+let genBtn =getElementYyId("btnGen");
+let buttonHandler = () => {
+    document.getElementById("password").value = addNewPassword();
+    const password =document.querySelector('#password');
+    const button = document.querySelector("button");
+    let character ='01234567890abcdefghijklmnopqrctuvwxyz!@$%&*()_+<>?:"{}';
+    let passwordLength =12;
+    let passwordValue= '';
+    for( let i =0; i< passwordLength; i++){
+        let number = Math.floor(Math.random() * character.length);
+        passwordValue += character.substring(number, number +1);
+    }
+    password.value = passwordValue;
 }
+button.addEventListener('click', createPassword);
